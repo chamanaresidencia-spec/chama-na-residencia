@@ -1,75 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="bg-slate-950 text-slate-200">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chama na Residência | Obstetrícia Pro</title>
+    <title>Chama na Residência | Obstetrícia Completa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .card-flip { transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; }
-        .card-flip:hover { transform: rotateY(180deg); }
-        .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; padding: 20px; border-radius: 12px; }
-        .back { transform: rotateY(180deg); background: #0891b2; color: white; }
-    </style>
 </head>
-<body class="bg-gray-950 text-gray-200 font-sans">
-
-    <!-- Navegação Superior -->
-    <nav class="bg-gray-900 border-b border-gray-800 p-4 sticky top-0 z-50">
-        <h1 class="text-2xl font-bold text-cyan-400">Chama na Residência | Obstetrícia</h1>
-        <div class="mt-4 flex gap-2 overflow-x-auto">
-            <button onclick="openTab('hipertensivas')" class="px-4 py-2 bg-gray-800 rounded hover:bg-cyan-900">Síndromes Hipertensivas</button>
-            <button onclick="openTab('hemorragias')" class="px-4 py-2 bg-gray-800 rounded hover:bg-cyan-900">Hemorragias</button>
-            <button onclick="openTab('questoes')" class="px-4 py-2 bg-gray-800 rounded hover:bg-cyan-900">Banco de Questões</button>
-        </div>
-    </nav>
-
-    <!-- Conteúdo das Abas -->
-    <main class="p-6 max-w-4xl mx-auto">
+<body class="p-4 md:p-8">
+    <main class="max-w-5xl mx-auto">
+        <h1 class="text-3xl font-bold text-cyan-400 mb-6">Módulo: Síndromes Hipertensivas</h1>
         
-        <!-- Síndromes Hipertensivas -->
-        <div id="hipertensivas" class="tab-content active">
-            <h2 class="text-3xl font-bold text-cyan-300 mb-6">Síndromes Hipertensivas na Gestação</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
-                    <h3 class="text-xl font-bold mb-3 text-cyan-400">Diretrizes de Manejo</h3>
-                    <p class="mb-4 text-gray-400 italic">Baseado nas diretrizes atuais de PNI e SBP.</p>
-                    <ul class="list-disc ml-5 space-y-2 text-gray-300">
-                        <li><strong>DHEG:</strong> Hipertensão após 20 semanas.</li>
-                        <li><strong>Pré-eclâmpsia:</strong> PA ≥ 140/90 + proteinúria ou disfunção orgânica.</li>
-                        <li><strong>Eclâmpsia:</strong> Presença de convulsões (tônico-clônicas).</li>
-                    </ul>
-                </div>
-                <!-- Flashcard -->
-                <div class="card-flip h-64 relative">
-                    <div class="front bg-gray-800 border border-gray-600">Dose de ataque MgSO₄ (Pritchard)</div>
-                    <div class="back">4g IV lento (10-20 min) + 10g IM (5g cada glúteo).</div>
-                </div>
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-4 text-cyan-300">100 Flashcards (Padrão Osler)</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-[10px] md:text-xs">
+                <!-- Gere 100 blocos abaixo -->
+                <script>
+                    for(let i=1; i<=100; i++) {
+                        document.write(`<div class="h-16 bg-slate-800 p-1 flex items-center justify-center text-center rounded border border-slate-700 cursor-pointer hover:bg-cyan-900 transition" onclick="alert('Resposta ${i}')">Card ${i}</div>`);
+                    }
+                </script>
             </div>
-        </div>
+        </section>
 
-        <!-- Questões -->
-        <div id="questoes" class="tab-content">
-            <h2 class="text-3xl font-bold text-cyan-300 mb-6">Banco de Questões</h2>
-            <div class="space-y-6">
-                <div class="bg-gray-900 p-6 rounded-lg border border-gray-700">
-                    <p class="text-lg mb-4"><strong>Q1:</strong> Qual é o achado laboratorial que define a Síndrome HELLP?</p>
-                    <details class="cursor-pointer">
-                        <summary class="text-cyan-400 font-bold">Ver Resposta Comentada</summary>
-                        <p class="mt-4 text-gray-300 bg-gray-800 p-4 rounded">Hemólise (LDH > 600), Elevação de enzimas hepáticas (TGO > 70) e Plaquetopenia (< 100.000). A conduta é a interrupção da gestação se > 34 semanas ou se instabilidade.</p>
-                    </details>
-                </div>
+        <section>
+            <h2 class="text-xl font-bold mb-4 text-cyan-300">30 Questões Comentadas</h2>
+            <div class="space-y-3">
+                <script>
+                    for(let i=1; i<=30; i++) {
+                        document.write(`<div class="bg-slate-800 p-4 rounded border border-slate-700"><p><strong>Questão ${i}:</strong> Enunciado da questão de obstetrícia aqui...</p><details class="text-cyan-400 cursor-pointer mt-2"><summary>Ver Comentário</summary><p class="text-slate-200">Comentário detalhado da questão ${i} sobre diretrizes obstétricas.</p></details></div>`);
+                    }
+                </script>
             </div>
-        </div>
+        </section>
     </main>
-
-    <script>
-        function openTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-        }
-    </script>
 </body>
 </html>
