@@ -1,36 +1,40 @@
-<!DOCTYPE html>
-<html lang="pt-BR" class="bg-slate-950 text-slate-200">
-<head>
-    <meta charset="UTF-8">
-    <title>Chama na Residência | Obstetrícia Completa</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="p-4 md:p-8">
-    <main class="max-w-5xl mx-auto">
-        <h1 class="text-3xl font-bold text-cyan-400 mb-6">Módulo: Síndromes Hipertensivas</h1>
-        
-        <section class="mb-10">
-            <h2 class="text-xl font-bold mb-4 text-cyan-300">100 Flashcards (Padrão Osler)</h2>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-[10px] md:text-xs">
-                <!-- Gere 100 blocos abaixo -->
-                <script>
-                    for(let i=1; i<=100; i++) {
-                        document.write(`<div class="h-16 bg-slate-800 p-1 flex items-center justify-center text-center rounded border border-slate-700 cursor-pointer hover:bg-cyan-900 transition" onclick="alert('Resposta ${i}')">Card ${i}</div>`);
-                    }
-                </script>
-            </div>
-        </section>
+<script>
+        // 10 Flashcards Preenchidos
+        const cards = [
+            "Definição PE: PA ≥ 140/90 após 20 sem + proteinúria ou disfunção orgânica?",
+            "Dose ataque Pritchard: 4g EV lento + 10g IM?",
+            "Antídoto do MgSO4: Gluconato de Cálcio 10%?",
+            "Tríade da Síndrome HELLP: Hemólise, Enzimas elevadas, Plaquetopenia?",
+            "Meta da PA na crise hipertensiva: 140-150/90-100 mmHg?",
+            "Droga de escolha na crise hipertensiva: Hidralazina ou Nifedipino?",
+            "Sinal de iminência de eclâmpsia: Cefaleia, escotomas, dor epigástrica?",
+            "Dose manutenção MgSO4: 1g/h em bomba de infusão?",
+            "Duração do tratamento após parto na PE: 24-48 horas?",
+            "Quando indicar parto na PE grave: ≥ 34 semanas ou instabilidade?"
+        ];
 
-        <section>
-            <h2 class="text-xl font-bold mb-4 text-cyan-300">30 Questões Comentadas</h2>
-            <div class="space-y-3">
-                <script>
-                    for(let i=1; i<=30; i++) {
-                        document.write(`<div class="bg-slate-800 p-4 rounded border border-slate-700"><p><strong>Questão ${i}:</strong> Enunciado da questão de obstetrícia aqui...</p><details class="text-cyan-400 cursor-pointer mt-2"><summary>Ver Comentário</summary><p class="text-slate-200">Comentário detalhado da questão ${i} sobre diretrizes obstétricas.</p></details></div>`);
-                    }
-                </script>
-            </div>
-        </section>
-    </main>
-</body>
-</html>
+        const container = document.getElementById('flashcards');
+        cards.forEach((c, i) => {
+            container.innerHTML += `<div class="h-20 bg-slate-800 p-2 flex items-center justify-center text-center rounded border border-cyan-700 cursor-pointer hover:bg-cyan-900 text-xs" onclick="alert('${c.split('?')[1] || 'Verifique o material de leitura'}')">${c}</div>`;
+        });
+
+        // 10 Questões Preenchidas
+        const quest = [
+            "Q1: Gestante 32 sem, PA 170/110. Conduta? | Resposta: Estabilização (Hidralazina) + MgSO4 + Parto.",
+            "Q2: Qual o achado no HELLP que indica risco de rotura hepática? | Resposta: Dor em hipocôndrio direito.",
+            "Q3: Como monitorar toxicidade do MgSO4? | Resposta: Reflexo patelar (1º a sumir), FR e diurese.",
+            "Q4: O que define PE com sinais de gravidade? | Resposta: PA >= 160/110 ou disfunção de órgão-alvo.",
+            "Q5: Qual a causa de morte na eclâmpsia? | Resposta: Edema cerebral e hemorragia intracraniana.",
+            "Q6: Quando suspender o MgSO4? | Resposta: Se FR < 16, ausência de reflexo patelar ou diurese < 25ml/h.",
+            "Q7: Existe benefício de MgSO4 na HAS Crônica isolada? | Resposta: Não, apenas se houver sobreposição de PE.",
+            "Q8: Qual o risco do uso de Nifedipino sublingual? | Resposta: Queda súbita da PA com hipoperfusão placentária.",
+            "Q9: Como é o diagnóstico de proteinúria isolada? | Resposta: >= 300mg em urina de 24h ou relação proteína/creatinina >= 0,3.",
+            "Q10: O que fazer na eclampsia refratária? | Resposta: Adicionar dose extra de MgSO4 ou Diazepam/Fenitoína."
+        ];
+        
+        const qContainer = document.getElementById('questoes');
+        quest.forEach(q => {
+            let [pergunta, resposta] = q.split('|');
+            qContainer.innerHTML += `<div class="bg-slate-800 p-4 rounded border border-slate-700"><p><strong>${pergunta}</strong></p><details class="text-cyan-400 cursor-pointer mt-2"><summary>Ver Comentário</summary><p class="text-slate-200">${resposta}</p></details></div>`;
+        });
+    </script>
