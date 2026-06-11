@@ -2,85 +2,63 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chama na Residência | Plataforma</title>
+    <title>Chama na Residência | Obstetrícia Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .flashcard-container { perspective: 1000px; cursor: pointer; }
-        .flashcard { transition: transform 0.6s; transform-style: preserve-3d; }
-        .flashcard.flipped { transform: rotateY(180deg); }
-        .front, .back { backface-visibility: hidden; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .back { transform: rotateY(180deg); }
+        .flashcard { perspective: 1000px; height: 150px; cursor: pointer; }
+        .inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
+        .flashcard:hover .inner { transform: rotateY(180deg); }
+        .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; padding: 10px; border-radius: 8px; }
+        .back { transform: rotateY(180deg); background: #0891b2; }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100 min-h-screen">
+<body class="bg-slate-900 text-slate-100 p-4">
 
-    <div class="flex h-screen">
-        <!-- Sidebar -->
-        <nav class="w-64 bg-gray-800 p-6">
-            <h1 class="text-xl font-bold text-cyan-400 mb-8">Chama na Residência</h1>
-            <ul class="space-y-4">
-                <li><button onclick="showSection('dashboard')" class="w-full text-left p-2 hover:bg-gray-700 rounded">Dashboard</button></li>
-                <li><button onclick="showSection('obstetricia')" class="w-full text-left p-2 bg-cyan-900 rounded text-cyan-200">Obstetrícia</button></li>
-                <li><button class="w-full text-left p-2 hover:bg-gray-700 rounded text-gray-500 cursor-not-allowed">Pediatria</button></li>
-                <li><button class="w-full text-left p-2 hover:bg-gray-700 rounded text-gray-500 cursor-not-allowed">Ginecologia</button></li>
-            </ul>
-        </nav>
+    <header class="mb-8 border-b border-slate-700 pb-4">
+        <h1 class="text-3xl font-bold text-cyan-400">Obstetrícia: Módulo Residência</h1>
+    </header>
 
-        <!-- Main Content -->
-        <main class="flex-1 p-8 overflow-y-auto">
-            <div id="obstetricia-content">
-                <h2 class="text-3xl font-bold mb-6">Obstetrícia</h2>
-                
-                <!-- Sub-tabs -->
-                <div class="flex gap-4 mb-8 border-b border-gray-700 pb-2">
-                    <button class="border-b-2 border-cyan-400 pb-2">Síndromes Hipertensivas</button>
-                    <button class="text-gray-500 hover:text-white">Hemorragias</button>
-                    <button class="text-gray-500 hover:text-white">Distocias</button>
-                </div>
-
-                <!-- Theory Section -->
-                <div class="bg-gray-800 p-6 rounded-lg mb-8">
-                    <h3 class="text-xl font-semibold mb-4 text-cyan-300">Síndromes Hipertensivas na Gestação</h3>
-                    <p class="mb-4">O manejo da pré-eclâmpsia e eclampsia baseia-se na estabilização hemodinâmica, prevenção de convulsões com <strong>Sulfato de Magnésio</strong> e definição do momento do parto.</p>
-                </div>
-
-                <!-- Flashcards Grid -->
-                <h4 class="text-lg font-bold mb-4">Flashcards de Estudo</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="flashcard-grid">
-                    <!-- Flashcard 1 -->
-                    <div class="flashcard-container h-48" onclick="this.querySelector('.flashcard').classList.toggle('flipped')">
-                        <div class="flashcard relative w-full h-full">
-                            <div class="front bg-gray-700 p-6 rounded-lg flex items-center justify-center text-center">
-                                <p>Antídoto do Sulfato de Magnésio</p>
-                            </div>
-                            <div class="back bg-cyan-800 p-6 rounded-lg flex items-center justify-center text-center">
-                                <p>Gluconato de Cálcio 10% (1 ampola IV lenta).</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Flashcard 2 -->
-                    <div class="flashcard-container h-48" onclick="this.querySelector('.flashcard').classList.toggle('flipped')">
-                        <div class="flashcard relative w-full h-full">
-                            <div class="front bg-gray-700 p-6 rounded-lg flex items-center justify-center text-center">
-                                <p>Tríade da intoxicação por MgSO₄</p>
-                            </div>
-                            <div class="back bg-cyan-800 p-6 rounded-lg flex items-center justify-center text-center">
-                                <p>Abolição do reflexo patelar, bradipneia e oligúria.</p>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Síndromes Hipertensivas -->
+    <section class="mb-12">
+        <h2 class="text-2xl mb-4 text-cyan-300">1. Síndromes Hipertensivas</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+            
+            <div class="flashcard">
+                <div class="inner">
+                    <div class="front bg-slate-800">DHEG: Definição de PE Grave</div>
+                    <div class="back">PA ≥ 160/110, proteinúria > 5g ou sinais de iminência.</div>
                 </div>
             </div>
-        </main>
-    </div>
 
-    <script>
-        function showSection(sectionId) {
-            console.log("Navigating to: " + sectionId);
-            // Aqui você pode adicionar lógica para esconder/mostrar outras divs
-        }
-    </script>
+            <div class="flashcard">
+                <div class="inner">
+                    <div class="front bg-slate-800">Eclâmpsia: Conduta Imediata</div>
+                    <div class="back">1. Estabilizar (ABC); 2. MgSO₄ (Pritchard/Zuspan); 3. Parto.</div>
+                </div>
+            </div>
+
+            <div class="flashcard">
+                <div class="inner">
+                    <div class="front bg-slate-800">Síndrome HELLP</div>
+                    <div class="back">Hemólise, Enzimas hepáticas elevadas, Plaquetopenia (<100k).</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Hemorragias do 1º Trimestre -->
+    <section>
+        <h2 class="text-2xl mb-4 text-cyan-300">2. Hemorragias (1º Trimestre)</h2>
+        <div class="bg-slate-800 p-6 rounded-lg">
+            <h3 class="font-bold mb-2">Quadro Clínico: Gravidez Ectópica Rota</h3>
+            <ul class="list-disc ml-5 space-y-2 text-slate-300">
+                <li>Dor pélvica súbita + Amenorreia + Sangramento vaginal.</li>
+                <li>Sinal de Blumberg positivo (irritação peritoneal).</li>
+                <li>Conduta: Estabilidade hemodinâmica = Videolaparoscopia.</li>
+            </ul>
+        </div>
+    </section>
+
 </body>
 </html>
