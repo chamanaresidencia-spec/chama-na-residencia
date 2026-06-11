@@ -2,63 +2,74 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chama na Residência | Obstetrícia Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .flashcard { perspective: 1000px; height: 150px; cursor: pointer; }
-        .inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
-        .flashcard:hover .inner { transform: rotateY(180deg); }
-        .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; padding: 10px; border-radius: 8px; }
-        .back { transform: rotateY(180deg); background: #0891b2; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .card-flip { transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; }
+        .card-flip:hover { transform: rotateY(180deg); }
+        .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; padding: 20px; border-radius: 12px; }
+        .back { transform: rotateY(180deg); background: #0891b2; color: white; }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 p-4">
+<body class="bg-gray-950 text-gray-200 font-sans">
 
-    <header class="mb-8 border-b border-slate-700 pb-4">
-        <h1 class="text-3xl font-bold text-cyan-400">Obstetrícia: Módulo Residência</h1>
-    </header>
-
-    <!-- Síndromes Hipertensivas -->
-    <section class="mb-12">
-        <h2 class="text-2xl mb-4 text-cyan-300">1. Síndromes Hipertensivas</h2>
-        <div class="grid md:grid-cols-3 gap-4">
-            
-            <div class="flashcard">
-                <div class="inner">
-                    <div class="front bg-slate-800">DHEG: Definição de PE Grave</div>
-                    <div class="back">PA ≥ 160/110, proteinúria > 5g ou sinais de iminência.</div>
-                </div>
-            </div>
-
-            <div class="flashcard">
-                <div class="inner">
-                    <div class="front bg-slate-800">Eclâmpsia: Conduta Imediata</div>
-                    <div class="back">1. Estabilizar (ABC); 2. MgSO₄ (Pritchard/Zuspan); 3. Parto.</div>
-                </div>
-            </div>
-
-            <div class="flashcard">
-                <div class="inner">
-                    <div class="front bg-slate-800">Síndrome HELLP</div>
-                    <div class="back">Hemólise, Enzimas hepáticas elevadas, Plaquetopenia (<100k).</div>
-                </div>
-            </div>
-
+    <!-- Navegação Superior -->
+    <nav class="bg-gray-900 border-b border-gray-800 p-4 sticky top-0 z-50">
+        <h1 class="text-2xl font-bold text-cyan-400">Chama na Residência | Obstetrícia</h1>
+        <div class="mt-4 flex gap-2 overflow-x-auto">
+            <button onclick="openTab('hipertensivas')" class="px-4 py-2 bg-gray-800 rounded hover:bg-cyan-900">Síndromes Hipertensivas</button>
+            <button onclick="openTab('hemorragias')" class="px-4 py-2 bg-gray-800 rounded hover:bg-cyan-900">Hemorragias</button>
+            <button onclick="openTab('questoes')" class="px-4 py-2 bg-gray-800 rounded hover:bg-cyan-900">Banco de Questões</button>
         </div>
-    </section>
+    </nav>
 
-    <!-- Hemorragias do 1º Trimestre -->
-    <section>
-        <h2 class="text-2xl mb-4 text-cyan-300">2. Hemorragias (1º Trimestre)</h2>
-        <div class="bg-slate-800 p-6 rounded-lg">
-            <h3 class="font-bold mb-2">Quadro Clínico: Gravidez Ectópica Rota</h3>
-            <ul class="list-disc ml-5 space-y-2 text-slate-300">
-                <li>Dor pélvica súbita + Amenorreia + Sangramento vaginal.</li>
-                <li>Sinal de Blumberg positivo (irritação peritoneal).</li>
-                <li>Conduta: Estabilidade hemodinâmica = Videolaparoscopia.</li>
-            </ul>
+    <!-- Conteúdo das Abas -->
+    <main class="p-6 max-w-4xl mx-auto">
+        
+        <!-- Síndromes Hipertensivas -->
+        <div id="hipertensivas" class="tab-content active">
+            <h2 class="text-3xl font-bold text-cyan-300 mb-6">Síndromes Hipertensivas na Gestação</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
+                    <h3 class="text-xl font-bold mb-3 text-cyan-400">Diretrizes de Manejo</h3>
+                    <p class="mb-4 text-gray-400 italic">Baseado nas diretrizes atuais de PNI e SBP.</p>
+                    <ul class="list-disc ml-5 space-y-2 text-gray-300">
+                        <li><strong>DHEG:</strong> Hipertensão após 20 semanas.</li>
+                        <li><strong>Pré-eclâmpsia:</strong> PA ≥ 140/90 + proteinúria ou disfunção orgânica.</li>
+                        <li><strong>Eclâmpsia:</strong> Presença de convulsões (tônico-clônicas).</li>
+                    </ul>
+                </div>
+                <!-- Flashcard -->
+                <div class="card-flip h-64 relative">
+                    <div class="front bg-gray-800 border border-gray-600">Dose de ataque MgSO₄ (Pritchard)</div>
+                    <div class="back">4g IV lento (10-20 min) + 10g IM (5g cada glúteo).</div>
+                </div>
+            </div>
         </div>
-    </section>
 
+        <!-- Questões -->
+        <div id="questoes" class="tab-content">
+            <h2 class="text-3xl font-bold text-cyan-300 mb-6">Banco de Questões</h2>
+            <div class="space-y-6">
+                <div class="bg-gray-900 p-6 rounded-lg border border-gray-700">
+                    <p class="text-lg mb-4"><strong>Q1:</strong> Qual é o achado laboratorial que define a Síndrome HELLP?</p>
+                    <details class="cursor-pointer">
+                        <summary class="text-cyan-400 font-bold">Ver Resposta Comentada</summary>
+                        <p class="mt-4 text-gray-300 bg-gray-800 p-4 rounded">Hemólise (LDH > 600), Elevação de enzimas hepáticas (TGO > 70) e Plaquetopenia (< 100.000). A conduta é a interrupção da gestação se > 34 semanas ou se instabilidade.</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function openTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
 </body>
 </html>
